@@ -27,12 +27,14 @@ Each script supports two main modes:
 - auto-validation
 #### Case Study 1: Maze (DRQ + ε-greedy)
 Directory: Maze_drQ_Epsilon_Greedy
+
 Run Evaluation
 - If grid_size = 10:
 cd Maze_drQ_Epsilon_Greedy
 python drQ-main-with-evaluation.py maze10.txt
 - If grid_size = 20:
 python drQ-main-with-evaluation.py maze20.txt
+
 Run Validation (Automatic)
 - If grid_size = 10:
 python drQ-main-auto-validation.py maze10.txt
@@ -44,11 +46,13 @@ Please check the Excel/CSV files in excel-results/ after execution.
 
 #### Case Study 2: Maze (DRQ + RWS)
 Directory: Maze_drQ_RWS/maze-XRL
+
 Run Evaluation
 - If grid_size = 10:
 python drQ-main-DRQ+RWS-with-evaluation.py maze10.txt
 - If grid_size = 20:
 python drQ-main-DRQ+RWS-with-evaluation.py maze20.txt
+
 Run Validation (Automatic)
 - If grid_size = 10:
 python drQ-main-DRQ+RWS-auto-validation.py maze10.txt
@@ -58,8 +62,10 @@ python drQ-main-DRQ+RWS-auto-validation.py maze20.txt
 Output Notes: All results are logged and stored in the excel-results/ directory, similar to Case Study 1.
 #### Case Study 3: Connect6 (BTMM + RWS)
 Directory: Connect6/BitBoard
+
 Run Evaluation
 python btmm_evaluation_main.py
+
 Run Validation (Automatic)
 python auto-validation.py
 
