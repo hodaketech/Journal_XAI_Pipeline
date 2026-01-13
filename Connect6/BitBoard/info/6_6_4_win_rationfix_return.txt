@@ -1,0 +1,2 @@
+Số lần tự chơi, Số lượt mô phỏng pure_MCTS, Tỷ lệ thắng
+1,1000,0.0
