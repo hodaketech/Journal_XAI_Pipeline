@@ -1,0 +1,13 @@
+Case Study,Metric,All states,Near Wall,Near Obstacle,Near Goal,Dead End,Crossroads,Opening,Mid-game,End-game
+Case Study 1,Fidelity,0.785714,0.812500,0.781818,1.000000,1.000000,0.909091,,,
+Case Study 1,Sufficiency,0.589286,0.687500,0.600000,0.750000,0.666667,0.818182,,,
+Case Study 1,Comprehensiveness,0.500705,0.475906,0.509808,0.734686,0.484980,0.602176,,,
+Case Study 1,Compactness,1.589286,1.750000,1.618182,1.500000,1.777778,1.636364,,,
+Case Study 2,Fidelity,0.750000,0.875000,0.745455,0.750000,0.888889,0.636364,,,
+Case Study 2,Sufficiency,0.589286,0.687500,0.600000,0.750000,0.333333,0.818182,,,
+Case Study 2,Comprehensiveness,0.474835,0.463714,0.483468,0.722373,0.355980,0.594962,,,
+Case Study 2,Compactness,1.732143,1.687500,1.763636,1.250000,1.666667,1.818182,,,
+Case Study 3,Fidelity,0.860229,,,,,,0.812030,0.865672,0.902985
+Case Study 3,Sufficiency,0.860229,,,,,,0.812030,0.865672,0.902985
+Case Study 3,Comprehensiveness,0.106553,,,,,,0.030232,0.059366,0.230062
+Case Study 3,Compactness,46.360341,,,,,,68.857143,50.052239,20.171642
