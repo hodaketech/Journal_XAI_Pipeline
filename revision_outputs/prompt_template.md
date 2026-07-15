@@ -6,7 +6,7 @@ This file records the exact implementation prompt and a shortened publication-fa
 
 ### System Prompt
 
-You are an explanation verbalizer for reinforcement-learning experiments. You are an optional downstream language renderer only. You do not make decisions, recompute scores, change policy behavior, or infer hidden causes. Convert the provided structured numerical explanation record into concise human-readable text. Use only the supplied fields. Preserve action names, contributor names, numeric signs, and key values. If evidence is missing, say it is unavailable instead of inventing it.
+You verbalize reinforcement-learning explanation records. Use only supplied evidence. Do not infer hidden causes, recompute scores, change actions, or claim sampled actions are deterministic best actions unless explicitly supported. Return valid JSON only.
 
 ### User Prompt Template
 
@@ -17,28 +17,18 @@ Input record JSON:
 {{EXPLANATION_RECORD_JSON}}
 
 Requirements:
-1. Use only evidence contained in the supplied record.
-2. Write in English only.
-3. Return local_explanation as a single string, not an array.
-4. Mention the selected action exactly as provided, preserving spelling and capitalization.
-5. Mention the alternative action exactly as provided if it is not null, preserving spelling and capitalization.
-6. Never translate action names, contributor names, source field names, or numeric signs.
-7. Preserve numerical values and their signs when you mention them.
-8. Describe positive contributors only as supporting evidence.
-9. Describe negative contributors only as trade-offs or limitations.
-10. Do not introduce contributors that are not in the record.
-11. Distinguish deterministic selection, exploration, and stochastic sampling using only the record fields.
-12. If selection_mechanism is RWS or BTMM+RWS, describe the selected action as sampled/probabilistic rather than deterministically best unless the record explicitly supports a highest-scoring claim.
-13. If selected_probability is low, state that the action was possible because of stochastic sampling.
-14. If negative_contributors is empty, do not invent a trade-off sentence.
-15. Return exactly these three JSON fields: local_explanation, evidence_used, limitations.
-16. Use empty arrays when evidence_used or limitations has no entries.
-17. Do not return Markdown fences or text outside the JSON object.
-18. Keep the explanation concise.
+1. English, ASCII, one short paragraph.
+2. Mention selected_action exactly. Mention alternative_action exactly when not null.
+3. Preserve numeric signs for cited values.
+4. Positive contributors support the action; negative contributors are trade-offs.
+5. Do not invent absent contributors or hidden reasons.
+6. For RWS or BTMM+RWS, describe selection as sampled/probabilistic unless highest-scoring evidence is explicit.
+7. Return exactly: local_explanation, evidence_used, limitations.
+8. No Markdown fences, bullets, or text outside JSON.
 
 Return valid JSON only in this shape:
 {{
-  "local_explanation": "one short paragraph or 3-4 bullets",
+  "local_explanation": "one short paragraph",
   "evidence_used": ["list of source fields used"],
   "limitations": ["missing or ambiguous fields, if any"]
 }}
@@ -109,18 +99,21 @@ The prompt template applies only to LLM-assisted verbalization. The output schem
 }
 ```
 
-## Final Local Configuration Used for the Reported Full Run
+## Final Local Configuration for Reproducible Reruns
 
 - Provider: Ollama.
 - Interface: Ollama local REST API.
 - Endpoint: `http://localhost:11434`.
 - Model: `qwen2.5:7b`.
+- Model digest: `845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e`.
+- Ollama version: `0.32.0`.
 - JSON generation mode: Ollama `format = "json"`.
 - Maximum output length: `max_output_tokens = 600`, passed to Ollama as `num_predict = 600`.
-- Temperature: not explicitly supplied; runtime default used.
-- Top-p: not explicitly supplied; runtime default used.
-- Seed: not supplied.
-- Timeout: `60` seconds per HTTP request.
+- Temperature: `0`.
+- Top-p: `1`.
+- Seed: `42`.
+- Timeout: `180` seconds per HTTP request.
+- Prompt version: `xrl-verbalizer-v1.0`.
 - Retry behavior: no automatic retry implemented.
 - Failure handling: generation errors raise an exception; parse failures are retained as raw text and reported by validation; validation failures are logged for review and are not automatically accepted or automatically replaced.
 
