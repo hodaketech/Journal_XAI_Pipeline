@@ -86,12 +86,20 @@ def as_output_text(output: dict[str, Any] | str | None, fallback_template: str |
         return "", ["LLM output is neither a string nor a JSON object"]
     expected = {"local_explanation", "evidence_used", "limitations"}
     missing = sorted(expected - set(output))
+    extra = sorted(set(output) - expected)
     if missing:
         issues.append(f"LLM output missing required fields: {', '.join(missing)}")
+    if extra:
+        issues.append(f"LLM output has extra fields: {', '.join(extra)}")
+    if "local_explanation" in output and not isinstance(output["local_explanation"], str):
+        issues.append("local_explanation must be a string")
     if "evidence_used" in output and not isinstance(output["evidence_used"], list):
         issues.append("evidence_used must be an array")
     if "limitations" in output and not isinstance(output["limitations"], list):
         issues.append("limitations must be an array")
+    for field in expected:
+        if field in output and output[field] is None:
+            issues.append(f"{field} must not be null")
     return normalize_text(output.get("local_explanation", "")), issues
 
 
@@ -187,8 +195,37 @@ def validate_pair(record: dict[str, Any], output: dict[str, Any] | str | None) -
     return issues
 
 
+def issue_category(issue: str) -> str:
+    if issue.startswith("line ") or "neither a string nor a JSON object" in issue:
+        return "schema or JSON parsing failure"
+    if "missing required fields" in issue:
+        return "missing required field"
+    if "extra fields" in issue or "must be" in issue:
+        return "schema or JSON parsing failure"
+    if issue.startswith("selected action not mentioned"):
+        return "selected-action mismatch"
+    if issue.startswith("alternative action not mentioned"):
+        return "alternative-action mismatch"
+    if issue.startswith("unsupported contributor mentioned"):
+        return "unsupported contributor"
+    if "described as trade-off" in issue or "described as support" in issue:
+        return "contributor-polarity mismatch"
+    if "numeric sign" in issue:
+        return "numerical-sign mismatch"
+    if "stochastic" in issue or "probabilistic" in issue:
+        return "stochasticity inconsistency"
+    return "other"
+
+
 def output_key(row: dict[str, Any], index: int) -> str:
-    return str(row.get("record_id") or row.get("source_row_id") or index)
+    if row.get("record_id"):
+        return str(row["record_id"])
+    case_study = row.get("case_study")
+    source_file = row.get("source_file")
+    source_row_id = row.get("source_row_id")
+    if case_study is not None and source_file is not None and source_row_id is not None:
+        return f"{case_study}|{source_file}|{source_row_id}"
+    return str(source_row_id or index)
 
 
 def main() -> None:
@@ -219,6 +256,7 @@ def main() -> None:
         key = output_key(record, idx)
         output = outputs_by_key.get(key) if args.llm_outputs else None
         issues = validate_pair(record, output)
+        categories = sorted({issue_category(issue) for issue in issues})
         results.append(
             {
                 "record_key": key,
@@ -227,6 +265,7 @@ def main() -> None:
                 "source_row_id": record.get("source_row_id"),
                 "passed": len(issues) == 0,
                 "issues": issues,
+                "error_categories": categories,
             }
         )
 

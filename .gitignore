@@ -1,0 +1,14 @@
+.env
+.env.*
+!.env.example
+
+__pycache__/
+*.py[cod]
+
+# Word/QA intermediates
+~$*.docx
+revision_outputs/*_render/
+revision_outputs/*_render_word/
+revision_outputs/docx_media_inspect/
+revision_outputs/final_docx_media/
+revision_outputs/paper_llm_audit_*/

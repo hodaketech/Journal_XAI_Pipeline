@@ -9,10 +9,10 @@
 
 ### Directory Structure
 #### Maze_drQ_Epsilon_Greedy/
-    Source code for Case Study 1 (DRQ + ε-greedy)
+    Source code for Case Study 1 (reward-decomposed Q-values + ε-greedy)
 
 #### Maze_drQ_RWS/maze-XRL/
-    Source code for Case Study 2 (DRQ + RWS)
+    Source code for Case Study 2 (reward-decomposed Q-values + RWS)
 
 #### Connect6/BitBoard/
     Source code for Case Study 3 (Connect6, BTMM + RWS)
@@ -25,7 +25,7 @@ Detailed instructions for each case study are provided below.
 Each script supports two main modes:
 - evaluation
 - auto-validation
-#### Case Study 1: Maze (DRQ + ε-greedy)
+#### Case Study 1: Maze (reward-decomposed Q-values + ε-greedy)
 Directory: Maze_drQ_Epsilon_Greedy
 
 Run Evaluation
@@ -44,7 +44,7 @@ python drQ-main-auto-validation.py maze20.txt
 Output Notes: All results (metrics, data tables, and logs related to evaluation/validation) are logged and saved in the excel-results/ directory (as configured in the code).
 Please check the Excel/CSV files in excel-results/ after execution.
 
-#### Case Study 2: Maze (DRQ + RWS)
+#### Case Study 2: Maze (reward-decomposed Q-values + RWS)
 Directory: Maze_drQ_RWS/maze-XRL
 
 Run Evaluation
@@ -75,4 +75,3 @@ Brief Explanation of the Two Modes
 Collects evaluation data (e.g., Action Agreement, Sufficiency, Compactness, human-like metrics if applicable), generates tables/figures, and exports result files to excel-results/.
 - Auto-validation:
 Performs automated validation checks (e.g., error codes MZ01.., MZ02.. for Maze; C6-01.. for Connect6 as defined in the paper) and records validation reports in excel-results/ or logs/.
-
