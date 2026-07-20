@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/xrl-explanation-record.schema.json",
+  "title": "XRL Explanation Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "case_study",
+    "domain",
+    "state_descriptor",
+    "selected_action",
+    "selection_mechanism",
+    "positive_contributors",
+    "negative_contributors",
+    "source_file",
+    "source_row_id"
+  ],
+  "properties": {
+    "case_study": {
+      "type": "string",
+      "description": "Case study identifier, e.g. Case Study 1, Case Study 2, Case Study 3."
+    },
+    "domain": {
+      "type": "string",
+      "enum": ["Maze", "Connect6"]
+    },
+    "state_descriptor": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Minimal state description, such as maze coordinates or compact board/move metadata."
+    },
+    "selected_action": {
+      "type": ["string", "number", "integer"],
+      "description": "Action selected by the policy or sampled by the selection mechanism."
+    },
+    "alternative_action": {
+      "type": ["string", "number", "integer", "null"],
+      "description": "Compared alternative action, if available."
+    },
+    "selection_mechanism": {
+      "type": "string",
+      "enum": ["epsilon-greedy", "RWS", "BTMM+RWS", "argmax", "unknown"]
+    },
+    "selected_probability": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "candidate_probabilities": {
+      "type": ["object", "null"],
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    "positive_contributors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/contributor"
+      }
+    },
+    "negative_contributors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/contributor"
+      }
+    },
+    "decomposed_q_values": {
+      "type": ["object", "null"],
+      "additionalProperties": true,
+      "description": "Reward-component Q-values or margins. Use null when unavailable."
+    },
+    "btmm_scores": {
+      "type": ["object", "null"],
+      "additionalProperties": true,
+      "description": "BTMM feature scores, action scores, or gamma values. Use null when unavailable."
+    },
+    "gamma_values": {
+      "type": ["object", "null"],
+      "additionalProperties": {
+        "type": "number"
+      }
+    },
+    "total_margin": {
+      "type": ["number", "null"]
+    },
+    "stochasticity_note": {
+      "type": ["string", "null"],
+      "description": "Required when action selection may differ from argmax, e.g. epsilon-greedy exploration or RWS sampling."
+    },
+    "template_explanation": {
+      "type": ["string", "null"],
+      "description": "Existing deterministic/template explanation, if available."
+    },
+    "llm_metadata": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "properties": {
+        "provider": { "type": ["string", "null"] },
+        "model": { "type": ["string", "null"] },
+        "interface": { "type": ["string", "null"] },
+        "generation_date": { "type": ["string", "null"] },
+        "temperature": { "type": ["number", "null"] },
+        "top_p": { "type": ["number", "null"] },
+        "seed": { "type": ["number", "integer", "null"] },
+        "prompt_version": { "type": ["string", "null"] }
+      }
+    },
+    "source_file": {
+      "type": "string"
+    },
+    "source_sheet": {
+      "type": ["string", "null"]
+    },
+    "source_row_id": {
+      "type": ["string", "integer"]
+    }
+  },
+  "$defs": {
+    "contributor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "value", "role"],
+      "properties": {
+        "name": { "type": "string" },
+        "value": { "type": ["number", "null"] },
+        "role": { "type": "string", "enum": ["positive", "negative"] },
+        "meaning": { "type": ["string", "null"] },
+        "source_field": { "type": ["string", "null"] }
+      }
+    }
+  }
+}
