@@ -1,0 +1,99 @@
+{
+  "run_started_at_utc": "2026-07-23T00:54:04+00:00",
+  "query_core": {
+    "block1": [
+      "explainable reinforcement learning",
+      "interpretable reinforcement learning"
+    ],
+    "block2": [
+      "policy explanation",
+      "action explanation",
+      "action selection",
+      "taxonomy",
+      "evaluation"
+    ]
+  },
+  "year_from": 2021,
+  "year_to": 2026,
+  "contact_email": "98197418+Jtahhhhh@users.noreply.github.com",
+  "sources": {
+    "arxiv": {
+      "endpoint": "http://export.arxiv.org/api/query",
+      "queries": [
+        "all:\"explainable reinforcement learning\"",
+        "all:\"interpretable reinforcement learning\""
+      ],
+      "status": "ok",
+      "raw_count": 128,
+      "kept_count": 20,
+      "csv": "D:\\ThucNghiem\\Journal_XAI_Pipeline\\survey\\raw_exports\\arxiv.csv",
+      "run_at_utc": "2026-07-23T00:54:08+00:00"
+    },
+    "crossref": {
+      "endpoint": "https://api.crossref.org/works",
+      "queries": [
+        "\"explainable reinforcement learning\" \"policy explanation\"",
+        "\"explainable reinforcement learning\" \"action explanation\"",
+        "\"explainable reinforcement learning\" \"action selection\"",
+        "\"explainable reinforcement learning\" \"taxonomy\"",
+        "\"explainable reinforcement learning\" \"evaluation\"",
+        "\"interpretable reinforcement learning\" \"policy explanation\"",
+        "\"interpretable reinforcement learning\" \"action explanation\"",
+        "\"interpretable reinforcement learning\" \"action selection\"",
+        "\"interpretable reinforcement learning\" \"taxonomy\"",
+        "\"interpretable reinforcement learning\" \"evaluation\""
+      ],
+      "status": "ok",
+      "raw_count": 500,
+      "kept_count": 10,
+      "csv": "D:\\ThucNghiem\\Journal_XAI_Pipeline\\survey\\raw_exports\\crossref.csv",
+      "run_at_utc": "2026-07-23T00:54:31+00:00"
+    },
+    "openalex": {
+      "endpoint": "https://api.openalex.org/works",
+      "queries": [
+        "\"explainable reinforcement learning\" \"policy explanation\"",
+        "\"explainable reinforcement learning\" \"action explanation\"",
+        "\"explainable reinforcement learning\" \"action selection\"",
+        "\"explainable reinforcement learning\" \"taxonomy\"",
+        "\"explainable reinforcement learning\" \"evaluation\"",
+        "\"interpretable reinforcement learning\" \"policy explanation\"",
+        "\"interpretable reinforcement learning\" \"action explanation\"",
+        "\"interpretable reinforcement learning\" \"action selection\"",
+        "\"interpretable reinforcement learning\" \"taxonomy\"",
+        "\"interpretable reinforcement learning\" \"evaluation\""
+      ],
+      "status": "ok",
+      "raw_count": 786,
+      "kept_count": 74,
+      "csv": "D:\\ThucNghiem\\Journal_XAI_Pipeline\\survey\\raw_exports\\openalex.csv",
+      "run_at_utc": "2026-07-23T00:54:58+00:00"
+    },
+    "springer": {
+      "status": "disabled",
+      "endpoint": "",
+      "queries": [],
+      "raw_count": 0,
+      "kept_count": 0,
+      "run_at_utc": "2026-07-23T00:54:58+00:00"
+    },
+    "elsevier": {
+      "status": "disabled",
+      "endpoint": "",
+      "queries": [],
+      "raw_count": 0,
+      "kept_count": 0,
+      "run_at_utc": "2026-07-23T00:54:58+00:00"
+    },
+    "ieee": {
+      "status": "disabled",
+      "endpoint": "",
+      "queries": [],
+      "raw_count": 0,
+      "kept_count": 0,
+      "run_at_utc": "2026-07-23T00:54:58+00:00"
+    }
+  },
+  "total_raw_before_dedup": 1414,
+  "run_finished_at_utc": "2026-07-23T00:54:58+00:00"
+}

@@ -1,0 +1,33 @@
+query_core:
+  block1:
+    - "explainable reinforcement learning"
+    - "interpretable reinforcement learning"
+  block2:
+    - "policy explanation"
+    - "action explanation"
+    - "action selection"
+    - "taxonomy"
+    - "evaluation"
+year_from: 2021
+year_to: 2026
+contact_email: "98197418+Jtahhhhh@users.noreply.github.com"
+limits:
+  max_pages_per_query: 1
+  crossref_rows: 50
+  openalex_per_page: 100
+  arxiv_max_results: 100
+  arxiv_min_interval_seconds: 3.2
+  default_min_interval_seconds: 1.0
+sources:
+  arxiv:
+    enabled: true
+  crossref:
+    enabled: true
+  openalex:
+    enabled: true
+  springer:
+    enabled: false
+  elsevier:
+    enabled: false
+  ieee:
+    enabled: false
