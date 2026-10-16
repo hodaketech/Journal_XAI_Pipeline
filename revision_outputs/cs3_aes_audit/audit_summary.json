@@ -1,0 +1,109 @@
+{
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "hashes": {
+    "Connect6\\BitBoard\\btmm_evaluation_main.py": "f13e3aae1c99049460afad6707356093d49f2345a9c656ed8417de71cdab2eb7",
+    "Connect6\\BitBoard\\evaluation-validation-dataset-processed.csv": "3bf98848eb0826ca9bbc8c41d276240e78dfd49556352767a53b3ab26eea17f3"
+  },
+  "n_rows": 401,
+  "distinct_game_ids": 1,
+  "distinct_game_move_keys": 90,
+  "exact_duplicate_rows": 1,
+  "AA_Suff_mismatches": 0,
+  "bound_violations": 0,
+  "candidate_alignment_failures": 8,
+  "quality_filtered_n": 386,
+  "checks": {
+    "AA_equals_Suff_all_rows": true,
+    "all_legacy_failures_are_tied": true,
+    "consistent_ties_Suff_always_one": true,
+    "legacy_suff_is_reference_inclusion": true,
+    "random_expectations_exhaustive_small_cases": true
+  },
+  "top1_failures": 66,
+  "failures_without_max_tie": 0,
+  "gamma_sum_range": [
+    0.9983,
+    2.2003
+  ],
+  "phase_macro": {
+    "AA": 0.8351849773687952,
+    "Suff": 0.8351849773687952,
+    "Comp_raw_gamma": 0.10354304791830321,
+    "P_argmax": 0.10529398428486321,
+    "delta_P_output_mask": 0.10228368506997715,
+    "normalized_Comp": 0.8351849773687952,
+    "AES80": 46.36034115138593,
+    "AES80_fraction": 0.6410614552886903,
+    "candidates": 68.23383084577115,
+    "entropy_nats": 3.7130566167119436,
+    "entropy_normalized": 0.8838570673745773,
+    "max_tie_count": 1.4471252758762576
+  },
+  "row_micro": {
+    "AA": 0.8354114713216958,
+    "Suff": 0.8354114713216958,
+    "Comp_raw_gamma": 0.10373341645885287,
+    "P_argmax": 0.10548116955391854,
+    "delta_P_output_mask": 0.1024709100424295,
+    "normalized_Comp": 0.8354114713216958,
+    "AES80": 46.30423940149626,
+    "AES80_fraction": 0.6407711408719283,
+    "candidates": 68.17705735660847,
+    "entropy_nats": 3.7113024570764903,
+    "entropy_normalized": 0.8836183007119046,
+    "max_tie_count": 1.4463840399002494
+  },
+  "workbook_max_abs_difference": {
+    "AA": 0.06766917293233077,
+    "suff_frac": 0.06766917293233077,
+    "comp_mean": 0.0036298507462687035,
+    "AES_mean": 3.552713678800501e-15
+  },
+  "workbook": {
+    "summary_all_states": [
+      {
+        "n_states": 133.6666666666667,
+        "AA": 0.8602289305352935,
+        "suff_frac": 0.8602289305352935,
+        "comp_mean": 0.1065533123854412,
+        "AES_mean": 46.36034115138593
+      }
+    ],
+    "summary_by_group": [
+      {
+        "group": "opening",
+        "n_states": 133,
+        "AA": 0.8120300751879699,
+        "suff_frac": 0.8120300751879699,
+        "comp_mean": 0.03023157894736842,
+        "AES_mean": 68.85714285714286
+      },
+      {
+        "group": "midgame",
+        "n_states": 134,
+        "AA": 0.8656716417910447,
+        "suff_frac": 0.8656716417910447,
+        "comp_mean": 0.05936641791044776,
+        "AES_mean": 50.05223880597015
+      },
+      {
+        "group": "endgame",
+        "n_states": 134,
+        "AA": 0.9029850746268657,
+        "suff_frac": 0.9029850746268657,
+        "comp_mean": 0.2300619402985075,
+        "AES_mean": 20.17164179104478
+      }
+    ]
+  },
+  "missing": [
+    "executed RWS action/draw",
+    "board snapshots",
+    "active feature matrix",
+    "Q and visits traces",
+    "source for AES 1.457",
+    "manuscript"
+  ],
+  "random_control": "Exact expectation of uniform size-min(k,m) subsets without replacement; no seed needed."
+}

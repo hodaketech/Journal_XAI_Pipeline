@@ -1,0 +1,37 @@
+{
+  "n_rows": 401,
+  "n_empty_explanations": 7,
+  "aes_record_mean": 2.0964467005076144,
+  "aes_by_phase": {
+    "Opening": {
+      "n_rows": 133,
+      "n_with_explanation": 133,
+      "aes": 2.0150375939849625
+    },
+    "Midgame": {
+      "n_rows": 134,
+      "n_with_explanation": 133,
+      "aes": 2.045112781954887
+    },
+    "Endgame": {
+      "n_rows": 134,
+      "n_with_explanation": 128,
+      "aes": 2.234375
+    }
+  },
+  "aes_macro_over_phases": 2.098175125313283,
+  "level_counts": {
+    "RẤT THẤP": 316,
+    "THẤP": 40,
+    "RẤT CAO": 18,
+    "TRUNG BÌNH": 11,
+    "CAO": 9
+  },
+  "factor_counts": {
+    "F1_selected_move_gamma": 394,
+    "F2_rws_mechanism": 394,
+    "F3_best_move_compare": 11,
+    "F4_cumulative_prob": 9,
+    "F5_optimality_value": 18
+  }
+}
